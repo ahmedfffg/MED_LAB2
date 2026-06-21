@@ -1,0 +1,371 @@
+/* auth.css - تنسيقات موحدة لصفحات المصادقة */
+
+:root {
+    --primary: #2c786c;
+    --primary-dark: #004445;
+    --accent: #f8b400;
+    --light: #faf5e4;
+    --white: #ffffff;
+    --dark: #333333;
+    --gray: #777777;
+    --light-gray: #f5f5f5;
+    --error: #e53935;
+    --success: #43a047;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 30px rgba(0, 68, 69, 0.15);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* الهيكل العام */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(44, 120, 108, 0.9), rgba(0, 68, 69, 0.95)), 
+                url('../images/auth-bg.jpg') no-repeat center center;
+    background-size: cover;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* رأس الصفحة */
+.auth-header {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(248, 180, 0, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+.auth-header .logo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.auth-header .logo img {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    object-fit: contain;
+}
+
+.auth-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.auth-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+/* نموذج المصادقة */
+.auth-form {
+    padding: 2.5rem 2rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.9rem 1.2rem 0.9rem 3rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Tajawal', sans-serif;
+    transition: var(--transition);
+    background-color: #f9f9f9;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(44, 120, 108, 0.2);
+    background-color: var(--white);
+    outline: none;
+}
+
+.form-group i {
+    position: absolute;
+    top: 38px;
+    right: 1.2rem;
+    color: var(--gray);
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus + i {
+    color: var(--primary);
+}
+
+/* زر إظهار كلمة المرور */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: var(--gray-color);
+    cursor: pointer;
+    font-size: 18px;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.toggle-password:hover {
+    color: var(--primary-dark);
+}
+
+/* تعديل حقول كلمة المرور لترك مساحة للأيقونة */
+input[type="password"],
+input[type="text"][name*="password"] {
+    padding-right: 40px !important;
+    padding-left: 15px !important;
+}
+
+/* أيقونة العين داخل الحقل */
+.toggle-password i {
+    transition: var(--transition);
+}
+
+/* التأثير عند التركيز على الحقل */
+.form-group:focus-within .toggle-password {
+    color: var(--primary-color);
+}
+
+/* خيارات النموذج */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--gray);
+}
+
+.remember-me input {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    accent-color: var(--primary);
+}
+
+.forgot-password {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.forgot-password:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* زر الإرسال */
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 6px rgba(0, 68, 69, 0.1);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 68, 69, 0.15);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::after {
+    transform: translateX(100%);
+}
+
+/* حالة التحميل */
+.is-loading .btn-primary span {
+    visibility: hidden;
+}
+
+.loader {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--white);
+    animation: spin 1s linear infinite;
+}
+
+.is-loading .loader {
+    display: block;
+}
+
+/* تذييل الصفحة */
+.auth-footer {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.95rem;
+}
+
+.auth-footer a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.auth-footer a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* رسائل الخطأ */
+.error-message {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: none;
+    text-align: right;
+    font-weight: 500;
+}
+
+.has-error input {
+    border-color: var(--error) !important;
+}
+
+.has-error .error-message {
+    display: block;
+}
+
+/* الحركات */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 480px) {
+    .auth-header {
+        padding: 1.8rem 1.5rem;
+    }
+    
+    .auth-form {
+        padding: 1.8rem 1.5rem;
+    }
+    
+    .auth-header .logo img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .auth-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .form-group input {
+        padding: 0.8rem 1rem 0.8rem 2.8rem;
+    }
+    
+    .form-group i, 
+    .toggle-password {
+        top: 35px;
+        font-size: 1rem;
+    }
+}
