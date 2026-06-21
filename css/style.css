@@ -1,1 +1,460 @@
+/* =========================
+   RESET & BASE
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
+:root {
+  --primary-color: #2c786c;
+  --secondary-color: #2c786c;
+  --accent-color: #22c55e;
+  --danger-color: #ef4444;
+  --whatsapp-color: #25d366;
+  --bg-light: #f8fafc;
+  --bg-gradient: linear-gradient(135deg, #3b82f6, #0ea5e9);
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: linear-gradient(120deg, #f9f9f9, #eef2ff);
+  overflow-x: hidden;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================
+   HEADER & NAV
+========================= */
+.mobile-header {
+  background: #2c786c;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  backdrop-filter: blur(8px);
+  animation: fadeDown 0.6s ease;
+}
+
+@keyframes fadeDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.mobile-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.menu-toggle:hover { transform: rotate(90deg); }
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+}
+.logo img {
+  height: 40px;
+  margin-left: 10px;
+}
+
+.header-actions a {
+  color: white;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+.header-actions a:hover { color: var(--accent-color); }
+
+/* NAV */
+.mobile-nav {
+  position: fixed;
+  top: 60px;
+  right: -100%;
+  width: 80%;
+  height: calc(100vh - 60px);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  transition: right 0.4s ease;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+.mobile-nav.active { right: 0; }
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 20px 0;
+}
+.mobile-nav ul li a {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  color: var(--text-dark);
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s, padding-right 0.3s;
+}
+.mobile-nav ul li a:hover {
+  background: rgba(37,99,235,0.08);
+  color: var(--primary-color);
+  padding-right: 30px;
+}
+.mobile-nav ul li a i {
+  margin-left: 10px;
+  color: var(--primary-color);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  background: #2c786c;
+  color: white;
+  padding: 140px 20px 100px;
+  text-align: center;
+  margin-top: 60px;
+  animation: fadeIn 1.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+@keyframes rotate {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+  text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  display: inline-block;                  
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.btn:hover {
+  background: var(--secondary-color);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 20px;
+}
+.call-btn { background-color: var(--primary-color); }
+.whatsapp-btn { background-color: var(--whatsapp-color); }
+
+/* =========================
+   QUICK SERVICES
+========================= */
+.quick-services {
+  background-color: white;
+  padding: 20px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border-radius: 12px;
+  margin-top: -30px;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.quick-services .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+.quick-service a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+.quick-service a:hover { transform: translateY(-6px) scale(1.05); }
+.quick-service i {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+.section-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--secondary-color);
+  position: relative;
+  padding-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.section-titles {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffff;
+  position: relative;
+  padding-bottom: 15px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.section-titles::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 3px;
+}
+
+/* =========================
+   SERVICE CARDS
+========================= */
+.service-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.service-card i {
+  font-size: 42px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+}
+.service-card:hover i { transform: rotate(15deg) scale(1.2); }
+.service-card h3 { margin-bottom: 10px; color: var(--secondary-color); }
+.service-card p { font-size: 15px; margin-bottom: 15px; }
+
+/* =========================
+   APPOINTMENT FORM
+========================= */
+.appointment {
+  padding: 50px 0;
+  background: #f0f7ff;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Tajawal', sans-serif;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+.form-group input:focus,
+.form-group select:focus {
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 8px rgba(37,99,235,0.3);
+  outline: none;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact {
+  padding: 50px 0;
+  background: var(--secondary-color);
+  color: white;
+}
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 30px;
+}
+.contact-method {
+  text-align: center;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+.contact-method:hover { transform: translateY(-6px); }
+.contact-method i { font-size: 34px; margin-bottom: 15px; color: var(--accent-color); }
+.contact-method h3 { margin-bottom: 10px; font-size: 18px; }
+.contact-method a { color: white; text-decoration: none; font-weight: 500; }
+.social-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+.social-icon:hover {
+  background: var(--accent-color);
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  animation: rotate 15s linear infinite;
+}
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--accent-color); }
+
+/* =========================
+   FLOATING WHATSAPP
+========================= */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--whatsapp-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  z-index: 999;
+  animation: pulse 2s infinite;
+  transition: transform 0.3s;
+}
+.floating-whatsapp:hover { transform: scale(1.1); }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (min-width: 768px) {
+  .hero { padding: 180px 0 120px; }
+  .hero h1 { font-size: 48px; }
+  .hero p { font-size: 20px; }
+  .mobile-nav { width: 320px; }
+}
+@media (max-width: 767px) {
+  .service-card { padding: 20px 15px; }
+  .hero h1 { font-size: 28px; }
+  .hero p { font-size: 16px; }
+}
